@@ -1,0 +1,28 @@
+<div class="container">
+	<h2>Login (NG-Model Driven Reactive Form)</h2>
+	<form [formGroup]="formdata" (ngSubmit)="onClickSubmit(formdata.value)">
+		<div class="form-group">
+			<label for="userName">User Name:</label>
+      <input type="userName" class="form-control" id="userName" placeholder="Enter Your User Name" name="userName" formControlName="userName">
+
+<span class="help-block" *ngIf="formdata.controls.userName.errors && (formdata.controls.userName.dirty || formdata.controls.userName.touched)">
+  <p *ngIf="formdata.controls.userName.errors.required">User Name is required</p>
+  <p *ngIf="formdata.controls.userName.errors.minlength">User Name must be atleast 3 characters long</p>
+</span>
+
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter Your Password" name="pwd" formControlName="pwd">
+
+<span class="help-block" *ngIf="formdata.controls.pwd.errors && (formdata.controls.pwd.dirty || formdata.controls.pwd.touched)">
+  <p *ngIf="formdata.controls.pwd.errors.required">Password is required</p>
+  <p *ngIf="formdata.controls.pwd.errors.minlength">Password must be atleast 8 characters long</p>
+</span>
+
+
+    </div>
+
+    <button type="submit" class="btn btn-default"  [disabled] = "!formdata.valid">Login</button>
+  </form>
+</div>
